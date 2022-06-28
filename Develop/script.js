@@ -9,7 +9,16 @@
 6. Display password
 */
 
-//randomizer functions to call later (?)
+//------------------------------------------------define variable
+var password =
+{
+  lowercase: (true || false),
+  uppercase: (true || false),
+  numbers: (true || false),
+  symbols: (true || false)
+}
+
+//------------------------------------------------randomizer functions to call later
 const randomLower = function()
 {
   var lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -34,6 +43,7 @@ const randomSymbol = function()
   return symbol(Math.floor(Math.random() * symbol.length));
 };
 
+//------------------------------------------------main generator function
 const generatePassword = function()
 {
   //user input
@@ -49,44 +59,61 @@ const generatePassword = function()
       window.alert("Invalid input! Please choose a number between 8 and 128.");
       return generatePassword();
     };
-  
-  let lowerChoice = window.confirm("Do you want lowercase letters in your password?");
-    if (lowerChoice)
+
+  //set password criteria to true or false
+  var confirmations = function()
+  {
+    //confirm lowercase
+    let lowerChoice = window.confirm("Do you want lowercase letters in your password?");
+      if (lowerChoice)
+      {
+        password.lowercase = true;
+      }
+      else
+      {
+        password.lowercase = false;
+      }
+    //confirm uppercase
+    let upperChoice = window.confirm("Do you want uppercase letters in your password?");
+      if (upperChoice)
+      {
+        password.uppercase = true;
+      }
+      else
+      {
+        password.uppercase = false;
+      }
+    //confirm numbers
+    let numberChoice = window.confirm("Do you want numbers in your password?");
+      if (numberChoice)
+      {
+        password.numbers = true;
+      }
+      else
+      {
+        password.numbers = false;
+      }
+    //confirm symbols
+    let symbolChoice = window.confirm("Do you want symbols in your password?");
+      if (symbolChoice)
+      {
+        password.symbols = true;
+      }
+      else
+      {
+        password.symbols = false;
+      }
+
+    if (!lowerChoice && !upperChoice && !numberChoice && !symbolChoice)
     {
-      true;
+      window.alert("Please choose at least one criterion!")
+      confirmations();
     }
-    else
-    {
-      false;
-    }
-  let upperChoice = window.confirm("Do you want uppercase letters in your password?");
-    if (upperChoice)
-    {
-      true;
-    }
-    else
-    {
-      false;
-    }
-  let numberChoice = window.confirm("Do you want numbers in your password?");
-    if (numberChoice)
-    {
-      true;
-    }
-    else
-    {
-      false;
-    }
-  let symbolChoice = window.confirm("Do you want symbols in your password?");
-    if (symbolChoice)
-    {
-      true;
-    }
-    else
-    {
-      false;
-    }
+  };
+  confirmations();
 }
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
