@@ -18,7 +18,7 @@ var password =
   symbols: (true || false)
 }
 
-//------------------------------------------------randomizer functions to call later
+//------------------------------------------------randomizer functions to call later?
 const randomLower = function()
 {
   var lowercase = "abcdefghijklmnopqrstuvwxyz";
