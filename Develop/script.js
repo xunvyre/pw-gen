@@ -22,25 +22,25 @@ var password =
 const randomLower = function()
 {
   var lowercase = "abcdefghijklmnopqrstuvwxyz";
-  return lowercase(Math.floor(Math.random() * lowercase.length));
+  return lowercase[Math.floor(Math.random() * lowercase.length)];
 };
 
 const randomUpper = function()
 {
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  return uppercase(Math.floor(Math.random() * uppercase.length));
+  return uppercase[Math.floor(Math.random() * uppercase.length)];
 };
 
 const randomNumber = function()
 {
   var number = "0123456789";
-  return number(Math.floor(Math.random() * number.length));
+  return number[Math.floor(Math.random() * number.length)];
 };
 
 const randomSymbol = function()
 {
   var symbol = " `~!@#$%^&*/.,";
-  return symbol(Math.floor(Math.random() * symbol.length));
+  return symbol[Math.floor(Math.random() * symbol.length)];
 };
 
 //------------------------------------------------main generator function
@@ -111,6 +111,35 @@ const generatePassword = function()
     }
   };
   confirmations();
+
+  var genPassword = "";
+  for (var i = 0; i < lengthChoice;)
+  {
+    if (password.lowercase)
+    {
+      genPassword += randomLower();
+      i++;
+      if (i >= lengthChoice) break;
+    }
+    if (password.uppercase)
+    {
+      genPassword += randomUpper();
+      i++;
+      if (i >= lengthChoice) break;
+    }
+    if (password.numbers)
+    {
+      genPassword += randomNumber();
+      i++;
+      if (i >= lengthChoice) break;
+    }
+    if (password.symbols)
+    {
+      genPassword += randomSymbol();
+      i++;
+    }
+  }
+  return genPassword;
 }
 
 
