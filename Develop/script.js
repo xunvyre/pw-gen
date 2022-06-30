@@ -9,7 +9,7 @@
 6. Display password
 */
 
-//------------------------------------------------define variable
+//------------------------------------------------define variable with booleans to confirm with prompts
 var password =
 {
   lowercase: (true || false),
@@ -18,7 +18,7 @@ var password =
   symbols: (true || false)
 }
 
-//------------------------------------------------randomizer functions to call later?
+//------------------------------------------------randomizer functions to call in for loop
 const randomLower = function()
 {
   var lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -43,13 +43,15 @@ const randomSymbol = function()
   return symbol[Math.floor(Math.random() * symbol.length)];
 };
 
-//------------------------------------------------main generator function
+//------------------------------------------------main generator function that connects to the button
+
 const generatePassword = function()
 {
-  //user input
+  //user input for selection of length
   let lengthChoice = window.prompt("How long would you like your password?");
   //convert string to interger
   lengthChoice = parseInt(lengthChoice);
+  //check for valid length
     if (lengthChoice >= 8 && lengthChoice <= 128)
     {
       window.confirm("Your password will be " +lengthChoice+ " characters long.");
@@ -60,7 +62,7 @@ const generatePassword = function()
       return generatePassword();
     };
 
-  //set password criteria to true or false
+  //set booleans to true or false
   var confirmations = function()
   {
     //confirm lowercase
@@ -103,7 +105,7 @@ const generatePassword = function()
       {
         password.symbols = false;
       }
-
+    //if nothing confirmed, start confirmations function loop
     if (!lowerChoice && !upperChoice && !numberChoice && !symbolChoice)
     {
       window.alert("Please choose at least one criterion!")
@@ -112,14 +114,15 @@ const generatePassword = function()
   };
   confirmations();
 
+//------------------------------------------------for loop to generate the desired password
   var genPassword = "";
   for (var i = 0; i < lengthChoice;)
   {
-    if (password.lowercase)
+    if (password.lowercase)         //check if boolean is true or false
     {
-      genPassword += randomLower();
-      i++;
-      if (i >= lengthChoice) break;
+      genPassword += randomLower(); //call function if true
+      i++;                          //and move to next check
+      if (i >= lengthChoice) break; //as long as the password still needs another character
     }
     if (password.uppercase)
     {
@@ -139,7 +142,7 @@ const generatePassword = function()
       i++;
     }
   }
-  return genPassword;
+  return genPassword;              //then generate the password once the length has been reached
 }
 
 
