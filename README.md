@@ -13,7 +13,7 @@ To create a JavaScript password generator based on a given webpage. With my curr
 https://xunvyre.github.io/challenge-three/
 
 ## Screenshot(s)
-![A screenshot of a password generator with a red "generate password" button.](./Develop/screenshot.jpg)
+![A screenshot of a password generator with a red "generate password" button.](./assets/images/screenshot.jpg)
 
 ## Contributors
 Xandromus (original code), Xunvyre
