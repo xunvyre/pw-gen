@@ -10,7 +10,7 @@ To create a JavaScript password generator based on a given webpage. With my curr
 * JavaScript
 
 ## Website
-https://xunvyre.github.io/challenge-three/
+https://xunvyre.github.io/pw-gen/
 
 ## Screenshot(s)
 ![A screenshot of a password generator with a red "generate password" button.](./assets/images/screenshot.jpg)
